@@ -40,11 +40,11 @@ namespace MergeDataAndDoc
             using (StreamReader inputFile2 = new StreamReader(inputFileName2))
             using (StreamWriter outputFile = new StreamWriter(outputFileName))
             {
-                function(inputFile, inputFile2, outputFile);
+                funciton(inputFile, inputFile2, outputFile);
             }
         }
 
-        private static void function(StreamReader inputFile, StreamReader inputFile2, StreamWriter outputFile)
+        public static void funciton(TextReader inputFile, TextReader inputFile2, TextWriter outputFile)
         {
             string line;
             string line2;
@@ -55,8 +55,6 @@ namespace MergeDataAndDoc
             line3 = inputFile2.ReadLine();
             line4 = inputFile2.ReadLine();
             string[] s = line2.Split(new char[3] { '$', '}', '{' });//分割字符串
-            while ((line = inputFile.ReadLine()) != null)
-            {
                 string[] s1 = line.Split(new char[] { '\t' });//分割字符串
                 string outputLine = s1[0] + s[3] + s1[1] + s[6] + s1[2] + s[9];
                 Console.WriteLine(outputLine);
@@ -65,7 +63,6 @@ namespace MergeDataAndDoc
                 outputFile.WriteLine(outputLine);
                 outputFile.WriteLine(line3);
                 outputFile.WriteLine(line4);//调整格式，并输出
-            }
         }
     }
 }
