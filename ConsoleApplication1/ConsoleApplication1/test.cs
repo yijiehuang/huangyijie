@@ -21,5 +21,15 @@ namespace ConsoleApplication1
             MergeDataAndDoc.Program.funciton(input, input2, output);
             Assert.That(output.ToString(), Is.EqualTo("Tomc先生(身份证字号12345678)为本校专任教师，聘期2年。\r\n\r\n\r\n"));
         }
+        [Test]
+        public void Test1()
+        {
+            StringReader input = new StringReader("jack\t123458\t4年");
+            StringReader input2 = new StringReader("${中文姓名}先生(身份证字号${身份证字号})为本校专任教师，聘期${年数}。");
+            StringWriter output = new StringWriter();
+
+            MergeDataAndDoc.Program.funciton(input, input2, output);
+            Assert.That(output.ToString(), Is.EqualTo("jack先生(身份证字号123458)为本校专任教师，聘期4年。\r\n\r\n\r\n"));
+        }
     }
 }
